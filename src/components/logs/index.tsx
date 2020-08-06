@@ -1,1 +1,1 @@
-export { Logs } from './view'
+export { Logs } from './Logs'

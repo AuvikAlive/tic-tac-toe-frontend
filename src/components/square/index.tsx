@@ -1,1 +1,1 @@
-export { Square } from './view'
+export { Square } from './Square'

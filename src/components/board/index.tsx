@@ -1,1 +1,1 @@
-export { Board } from './view'
+export { Board } from './Board'
