@@ -53,6 +53,7 @@ export const Board = () => {
           <StyledRow key={rowCount}>
             {row.map((square, colCount) => (
               <Square
+                data-testid={`${rowCount}-${colCount}`}
                 key={rowCount + colCount}
                 position={[rowCount, colCount]}
                 onClick={markSquare}
