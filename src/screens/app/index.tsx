@@ -1,1 +1,1 @@
-export { View as default } from './view'
+export { App } from './view'

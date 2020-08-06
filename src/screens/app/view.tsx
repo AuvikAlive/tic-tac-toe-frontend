@@ -1,3 +1,10 @@
 import React from 'react'
+import { Board, Logs } from 'components'
+import { StyledApp } from './styled'
 
-export const View = () => <div>Init</div>
+export const App = () => (
+  <StyledApp>
+    <Board />
+    <Logs />
+  </StyledApp>
+)
