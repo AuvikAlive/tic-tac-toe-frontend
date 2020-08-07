@@ -17,7 +17,7 @@ const drawBoard = [
 const xWinnerBoard = [
   ['X', 'O', 'X'],
   ['O', 'X', 'O'],
-  ['X', 'O', null],
+  ['X', null, null],
 ]
 
 const oWinnerBoard = [
@@ -40,7 +40,7 @@ describe('calculateWinner', () => {
 
   test('that getMiddleColumn returns the middle column', () => {
     expect(getMiddleColumn(drawBoard)).toEqual(['O', 'X', 'O'])
-    expect(getMiddleColumn(xWinnerBoard)).toEqual(['O', 'X', 'O'])
+    expect(getMiddleColumn(xWinnerBoard)).toEqual(['O', 'X', null])
     expect(getMiddleColumn(oWinnerBoard)).toEqual(['X', 'O', 'X'])
   })
 

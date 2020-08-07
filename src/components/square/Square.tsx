@@ -1,10 +1,11 @@
 import React from 'react'
+import { Position, Square as Value } from 'constants/staticTypes'
 import { StyledSquare } from './StyledSquare'
 
 type Props = {
-  onClick: (position: [number, number], value: string) => void
+  onClick: (position: Position, value: Value) => void
   position: [number, number]
-  value: string
+  value: Value
 }
 
 export const Square = ({ onClick, position, value, ...rest }: Props) => (

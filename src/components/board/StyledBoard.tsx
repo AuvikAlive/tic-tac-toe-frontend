@@ -5,12 +5,6 @@ export const StyledRoot = styled.div`
   flex-direction: column;
 `
 
-export const StyledStatus = styled.div`
-  width: calc(100vmin * 2 / 3);
-  text-align: center;
-  font-size: 3vmin;
-`
-
 export const StyledBoard = styled.div`
   width: calc(100vmin * 2 / 3);
   height: calc(100vmin * 2 / 3);
@@ -29,10 +23,6 @@ export const StyledRow = styled.div`
   &:last-child {
     border: none;
   }
-`
-
-export const StyledButton = styled.button`
-  cursor: pointer;
 `
 
 StyledBoard.displayName = 'StyledBoard'

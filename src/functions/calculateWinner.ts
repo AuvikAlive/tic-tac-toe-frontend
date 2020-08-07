@@ -1,8 +1,5 @@
 import { isNull } from 'lodash'
-
-type Square = null | string
-type Row = Square[]
-type Board = Row[]
+import { Row, Board, Square } from 'constants/staticTypes'
 
 export const isRowEmpty = (row: Row): boolean =>
   !Boolean(row) || row.every(isNull)

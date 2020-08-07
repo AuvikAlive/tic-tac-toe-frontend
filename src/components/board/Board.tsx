@@ -1,70 +1,45 @@
-import React, { useState, useCallback } from 'react'
-import { chunk } from 'lodash'
-import { Square } from 'components'
-import { calculateWinner } from 'functions/calculateWinner'
+import React, { useCallback } from 'react'
+import { Square } from 'components/square/Square'
 import {
-  StyledRoot,
-  StyledStatus,
-  StyledBoard,
-  StyledRow,
-  StyledButton,
-} from './StyledBoard'
+  Board as BoardType,
+  Square as Winner,
+  Position,
+} from 'constants/staticTypes'
+import { StyledBoard, StyledRow } from './StyledBoard'
 
-const initialState = chunk(Array(9).fill(null), 3)
+type Props = {
+  board: BoardType
+  winner: Winner
+  markSquare: ({ position }: { position: Position }) => void
+  getWinner: () => void
+}
 
-export const Board = () => {
-  const [board, setBoard] = useState(initialState)
-  const [mark, setMark] = useState('X')
-  const winner = calculateWinner(board)
-  const status = winner ? `Winner: ${winner}` : `Next player: ${mark}`
-
-  const markSquare = useCallback(
-    ([clickedRow, clickedCol], currentMark) => {
+export const Board = ({ board, winner, markSquare, getWinner }: Props) => {
+  const handleMarkSquare = useCallback(
+    (position, currentMark) => {
       if (!winner && !currentMark) {
-        const nextMark = mark === 'X' ? 'O' : 'X'
-
-        setBoard(prevState =>
-          prevState.map((row, rowCount) =>
-            row.map((square, colCount) =>
-              rowCount === clickedRow && colCount === clickedCol && !square
-                ? mark
-                : square,
-            ),
-          ),
-        )
-
-        setMark(nextMark)
+        markSquare({ position })
+        getWinner()
       }
     },
-    [mark, winner],
+    [getWinner, markSquare, winner],
   )
 
-  const resetBoard = useCallback(() => {
-    setBoard(initialState)
-    setMark('X')
-  }, [])
-
   return (
-    <StyledRoot>
-      <StyledStatus>{status}</StyledStatus>
-
-      <StyledBoard>
-        {board.map((row, rowCount) => (
-          <StyledRow key={rowCount}>
-            {row.map((square, colCount) => (
-              <Square
-                data-testid={`${rowCount}-${colCount}`}
-                key={rowCount + colCount}
-                position={[rowCount, colCount]}
-                onClick={markSquare}
-                value={square}
-              />
-            ))}
-          </StyledRow>
-        ))}
-      </StyledBoard>
-
-      <StyledButton onClick={resetBoard}>Reset</StyledButton>
-    </StyledRoot>
+    <StyledBoard>
+      {board.map((row, rowCount) => (
+        <StyledRow key={rowCount}>
+          {row.map((square, colCount) => (
+            <Square
+              data-testid={`${rowCount}-${colCount}`}
+              key={rowCount + colCount}
+              position={[rowCount, colCount]}
+              onClick={handleMarkSquare}
+              value={square}
+            />
+          ))}
+        </StyledRow>
+      ))}
+    </StyledBoard>
   )
 }
