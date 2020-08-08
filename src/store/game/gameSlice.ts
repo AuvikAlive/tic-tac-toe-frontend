@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { chunk } from 'lodash'
-import { Board, Mark, Square } from 'constants/staticTypes'
+import { Game } from 'constants/staticTypes'
 import { calculateWinner } from 'functions/calculateWinner'
 
-type InitialState = {
-  board: Board
-  mark: Mark
-  winner: Square
-}
-
-export const initialState: InitialState = {
+export const initialState: Game = {
   board: chunk(Array(9).fill(null), 3),
   mark: 'X',
   winner: null,

@@ -1,3 +1,15 @@
 import React from 'react'
+import { Action } from '@reduxjs/toolkit'
+import { StyledLogs } from './StyledLogs'
 
-export const Logs = () => <div>Logs go here</div>
+type Props = {
+  entries: Action[]
+}
+
+export const Logs = ({ entries }: Props) => (
+  <StyledLogs>
+    {entries.map((action, index) => (
+      <div key={action.type + index}>{JSON.stringify(action, null, 2)}</div>
+    ))}
+  </StyledLogs>
+)

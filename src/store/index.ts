@@ -1,6 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { rootReducer } from './rootReducer'
+import { InitialState } from 'constants/staticTypes'
+import { rootReducer as reducer } from './rootReducer'
+import { middleware } from './middleware'
 
-export const store = configureStore({
-  reducer: rootReducer,
-})
+export const configureAppStore = (preloadedState: InitialState) => {
+  const store = configureStore({
+    reducer,
+    middleware,
+    preloadedState,
+  })
+
+  return store
+}
