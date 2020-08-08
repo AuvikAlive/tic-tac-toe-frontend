@@ -1,1 +1,4 @@
-export const API = 'http://localhost:9000'
+const host = 'localhost'
+const port = 80
+
+export const API = `http://${host}:${port}`

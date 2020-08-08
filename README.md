@@ -1,16 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+First go to the tic-tac-toe-backend directory and run the docker image.
 
-## Available Scripts
-
-In the project directory, you can run:
+Then in the project directory, run:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br />
+or equivalent npm command
+
+### `npm start`
+
+This runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Other Available Scripts
 
 ### `yarn test`
 
